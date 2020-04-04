@@ -1,0 +1,33 @@
+T=int(input())
+S=[]
+for x in range(T):
+    s=input()
+    S.append(s)
+for x in range(T):
+    y=0
+    st=list(S[x])
+    while y<(len(st)-1):
+        z=int(st[y])-int(st[y+1])
+        if z>0:
+            w=1
+            while w!=(z+1):
+                st.insert(y+w,')')
+                w+=1
+        elif z<0:
+            w=1
+            while w!=(abs(z)+1):
+                st.insert(y+w,'(')
+                w+=1
+        y+=abs(z)
+        y+=1
+    a=int(st[0])
+    b=int(st[-1])
+    while a!=0:
+        st.insert(0,'(')
+        a-=1
+    while b!=0:
+        st.append(')')
+        b-=1
+    S[x]="".join(st)
+for x in range(len(S)):
+    print("Case #"+str(x+1)+": "+S[x])

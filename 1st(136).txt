@@ -1,0 +1,46 @@
+T=int(input())
+N=[]
+M=[]
+Trace=[]
+RC=[]
+for x in range(T):
+    a=int(input())
+    N.append(a)
+    i=[]
+    t=0
+    for y in range(a):
+        b=input().split(" ")
+        t+=(int(b[y]))
+        i.append(b)
+    Trace.append(t)
+    M.append(i)
+for x in range(len(N)):
+    rcr=0
+    rcc=0
+    for y in range(N[x]):
+        temprow=[]
+        tempcol=[]
+        tempr=0
+        tempc=0
+        for z in range(N[x]):
+            r=M[x][y][z]
+            c=M[x][z][y]
+            if z==0:
+                temprow.append(r)
+                tempcol.append(c)
+            else:
+                if r not in temprow:
+                    temprow.append(r)
+                else:
+                    tempr=1
+                if c not in tempcol:
+                    tempcol.append(c)
+                else:
+                    tempc=1
+        if tempr==1:
+            rcr+=1
+        if tempc==1:
+            rcc+=1
+    RC.append([rcr,rcc])
+for x in range(len(N)):
+    print("Case #"+str(x+1)+": "+str(Trace[x])+" "+str(RC[x][0])+" "+str(RC[x][1]))
